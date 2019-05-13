@@ -4,19 +4,20 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<form id="signup" name="signup" method="post" action="/user/signupProc">
+<form id="signup" name="signup" method="post" action="signupPost">
 	ID : <input type="text" id="userId" name="userId" oninput="idCheck()">
 	<span id="idCheckMsg"></span><br>
 	PW : <input type="password" id="password" name="password" onchange="isSame()"><br>
 	PW 확인 : <input type="password" id="passwordCheck" name="passwordCheck" oninput="isSame()">
 	<span id="same"></span><br>
 	이름 : <input type="text" name="name"><br>
-	생년월일 : <input type="text" id="datepicker" ><br>
-	성별 : <input type="radio" name="gender" value="male" checked = "checked">남
-		<input type="radio" name="gender" value="female">여
+	생년월일 : <input type="date" name="datepicker" id="birthday" value=""><br>
+	성별 : <input type="radio" name="gender" value="M" checked="checked">남
+		<input type="radio" name="gender" value="F">여
+		<span id="gender"></span>
 	<br>
-	이메일<input type="text" name="emailAddress" onfocus="this.value=';'">@
-	<input type="text" name="emailDomain" value="" disabled placeholder="naver.com">
+	이메일<input type="text" id="emailId" name="emailId" onfocus="this.value=''">@
+	<input type="text" id="emailDomain" name="emailDomain" value="" disabled placeholder="naver.com">
 	<select id="selectmenu" name="select" onchange="emailChanged()">
 	    <option value="naver.com" selected="selected">naver.com</option>
 	    <option value="gmail.com">gmail.com</option>
@@ -24,14 +25,22 @@
 	    <option value="nate.com">nate.com</option>
    		<option value="9" >직접입력</option>
 	</select><br>
-	SNS : <input type="text" name="sns"><br>
-	핸드폰번호 : <input type="text" name="phoneNumber" placeholder="010-0000-0000"><br>
+	SNS : <input type="text" id="SNS" name="SNS"><br>
+	핸드폰번호 : <input type="text" id="phoneNumber" name="phoneNumber" placeholder="010-0000-0000"><br>
 	<input type="submit" id="submit" disabled="disabled" value="회원가입">
 	<input type="reset" value="취소">
 </form>
 
 <script>
+$(document).ready(function () {
+    
 
+  });
+  
+	$(function () {
+    var radioVal = $('input[name="gender"]:checked').val();
+    $("#gender").val(radioVal);
+  	});
  function idCheck(){
 	var idCheck = false;
 	var query = {userId : $("#userId").val()};
@@ -61,12 +70,20 @@
 		}
 	});
 }
- $(function() {
-	    $( "#datepicker" ).datepicker({
-	    	dateFormat: "yy-mm-dd"
+ 
+ 
+  $(function() {
+	    $("#datepicker").datepicker({
+	    	showOn:"focus",
+	    	dateFormat: "yy-mm-dd",
+	    	onSelect: function(dateText){
+	    		// alert("selectd date : " + dateText + "input value" + this.value);
+	    		document.signup.datepicker.value = dateText;
+	    		document.getElementById('birthday').value = dateText;	    		
+	    	}
 	    });
 	  });
-  
+
   function emailChanged(){
 	  if(document.signup.select.options[document.signup.select.selectedIndex].value == '0'){
 		  document.signup.emailDomain.disabled = true;
@@ -77,10 +94,14 @@
 		  document.signup.emailDomain.value = "";
 		  document.signup.emailDomain.focus();
 		 } else{
-		  document.signup.emailDomain.disabled = true;
+		  document.signup.emailDomain.disabled = false;
 		  document.signup.emailDomain.value = document.signup.select.options[document.signup.select.selectedIndex].value;
+		  var selectVal = $('#selectmenu option:selected').val();
+		  $("#emailDomain").val(selectVal);
+		  
+		  alert($("#emailDomain").val());
 		 }
-  }
+  	}
   
   
   function isSame(){
@@ -105,4 +126,4 @@
 	  }
   }
   
-  </script>
+</script>

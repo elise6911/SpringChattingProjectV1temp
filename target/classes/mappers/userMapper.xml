@@ -19,4 +19,9 @@
 	<select id="idCheck" resultType="UserVO">
 		select userId from usertable where userId = #{userId}
 	</select>
+	
+	<insert id="insertUser" parameterType="UserVO">
+		insert into usertable 
+		values (#{userId}, #{password}, #{name}, #{birthday}, #{gender}, #{emailId}, #{emailDomain}, #{SNS}, #{phoneNumber})
+	</insert>
 </mapper>

@@ -11,7 +11,7 @@
 	<input type="reset" name="리셋">
 </form>
 
-    <a href="register.html" class="text-center">Register a new membership</a>
+    <a href="/user/signup" class="text-center">Register a new membership</a>
 
 <!-- 순서에 유의 -->
 <script type="text/javascript" src="/resources/js/rsa.js"></script>

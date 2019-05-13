@@ -48,5 +48,11 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace + ".idCheck", userId);
 	}
+
+	@Override
+	public void insertUser(UserVO vo) {
+		// TODO Auto-generated method stub
+		session.insert(namespace + ".insertUser", vo);
+	}
 	
 }
