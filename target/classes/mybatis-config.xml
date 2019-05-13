@@ -17,9 +17,9 @@
         <!-- <setting name="callSettersOnNulls" value="true" /> -->
     </settings>
     
-    <!-- <typeAliases>
-        <typeAlias alias="user" type="com.kccistc.spring.domain.UserVO"/>
-    </typeAliases> -->
+	<typeAliases>
+		<package name="com.kccistc.spring.domain"/>
+    </typeAliases>
  
     
    

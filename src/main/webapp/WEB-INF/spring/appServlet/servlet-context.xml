@@ -21,6 +21,28 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kccistc.spring.controller" />
+	<beans:bean id="authInterceptor" class="com.kccistc.spring.interceptor.AuthInterceptor">
+	</beans:bean>
+	
+	<beans:bean id="loginInterceptor" class="com.kccistc.spring.interceptor.LoginInterceptor">
+	</beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/home"/>
+<!--  로그인한 사용자에게 이용 권한을 주는페이지는 이곳에 매핑 패스 추가
+ 			<mapping path="/home"/>
+			<mapping path="/home"/>
+ -->			
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
+	<context:component-scan base-package="com.kccistc.spring.*" />
+	
 	
 </beans:beans>

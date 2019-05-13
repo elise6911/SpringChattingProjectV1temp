@@ -5,7 +5,18 @@
 	
 <mapper namespace="com.kccistc.spring.mapper.userMapper">
 
-	<!-- <select id="login" resultType="UserVO">
+	<select id="login" resultType="UserVO">
 		select userId, password from usertable where userId = #{userId} and password = #{password}
-	</select> -->
+	</select>
+	<update id="keepLogin">
+		update usertable set sessionKey = #{sessionId}, sessionLimit = #{next} where userId = #{userId} 
+	</update>
+	
+	<select resultType="UserVO" id="checkUserWithSessionKey">
+		select * from usertable where sessionKey = #{value} and sessionlimit > now() 
+	</select>
+	
+	<select id="idCheck" resultType="UserVO">
+		select userId from usertable where userId = #{userId}
+	</select>
 </mapper>
