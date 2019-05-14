@@ -99,7 +99,7 @@ $(document).ready(function () {
 		  var selectVal = $('#selectmenu option:selected').val();
 		  $("#emailDomain").val(selectVal);
 		  
-		  alert($("#emailDomain").val());
+		  // alert($("#emailDomain").val());
 		 }
   	}
   
