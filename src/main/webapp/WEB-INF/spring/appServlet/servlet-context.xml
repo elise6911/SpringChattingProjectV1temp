@@ -35,6 +35,7 @@
 		
 		<interceptor>
 			<mapping path="/home"/>
+			<mapping path="/chat/*"/>
 <!--  로그인한 사용자에게 이용 권한을 주는페이지는 이곳에 매핑 패스 추가
  			<mapping path="/home"/>
 			<mapping path="/home"/>

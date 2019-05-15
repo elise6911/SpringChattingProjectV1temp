@@ -28,4 +28,5 @@ public interface ChatDAO {
 	
 	public int getAllCount(String str);
 	public List<ChatRoomVO> chatListAll();
+	public void send(MessageVO msg);
 }

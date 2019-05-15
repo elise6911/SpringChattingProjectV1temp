@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +18,10 @@
 			<div id="chatMessageArea" style = "margin-top : 10px; margin-left:10px;"></div>
 		</div>
 	</div>
-	<textarea class="form-control"
+			<textarea class="form-control"
 				style="border: 1px solid #01D1FE; height: 65px; float: left; width: 80%"
 				placeholder="Enter ..." id = "message">
-				</textarea>
+			</textarea>
 				<span
 				style="float: right; width: 18%; height: 65px; text-align: center; background-color: #01D1FE; border-radius: 5px;">
 				<a
@@ -34,7 +35,7 @@
  connect();
 
  function connect() {
-	    sock = new SockJS('/chat');
+	    sock = new SockJS('/chat/chat');
 	    sock.onopen = function() {
 	        console.log('open');
 	    };
@@ -59,9 +60,8 @@
   if(msg != ""){
 	  message = {};
 	  message.content = $("#message").val()
-  	  message.opponentId = '${opponentId}'
   	  message.userId = '${userId}'
-  	  message.sender = '${sender}'
+  	  message.senderId = '${senderId}'
   }
   sock.send(JSON.stringify(message));
   $("#message").val("");
@@ -112,6 +112,7 @@
  $(document).ready(function() {
   $('#message').keypress(function(event){
    var keycode = (event.keyCode ? event.keyCode : event.which);
+   // 엔터 키 키코드는 13 엔터 치면 보내기~
    if(keycode == '13'){
     send();
    }

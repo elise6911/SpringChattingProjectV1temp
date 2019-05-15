@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kccistc.spring.domain.ChatRoomVO;
 import com.kccistc.spring.service.ChatService;
 
 @Controller
@@ -40,11 +41,25 @@ public class ChatController {
 	@RequestMapping(value = "/chatList", method = RequestMethod.GET)
 	public String listAll(Model model) throws Exception {
 		
-		
 		model.addAttribute("chatList", service.chatListAll());
 		
 		logger.info("All Chatting Room List Show ............");
 		return "chat/chatRoomList";
+	}
+	
+	@RequestMapping(value = "/createChat", method = RequestMethod.GET)
+	public String createChatRoom(ChatRoomVO chat) throws Exception {
+		
+		logger.info("create chat room GET............");
+		return "chat/createChat";
+	}
+	
+	@RequestMapping(value = "/createChatPost", method = RequestMethod.POST)
+	public String createChatRoomPost(ChatRoomVO chat) throws Exception {
+		
+		service.create(chat);
+		logger.info("create chat room POST............");
+		return "redirect:/chat/chatRoomList";
 	}
 	
 }

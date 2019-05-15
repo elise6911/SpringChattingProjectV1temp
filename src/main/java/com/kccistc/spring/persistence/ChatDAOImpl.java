@@ -176,6 +176,12 @@ public class ChatDAOImpl implements ChatDAO {
 		return session.selectList(namespace + ".chatListAll");
 	}
 
+	@Override
+	public void send(MessageVO msg) {
+		// TODO Auto-generated method stub
+		session.insert(namespace+".sendMsg", msg);
+	}
+
 
 
 }

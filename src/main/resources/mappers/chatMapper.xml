@@ -6,13 +6,20 @@
 <mapper namespace="com.kccistc.spring.mapper.chatMapper">
 
 <select id="chatListAll" resultType="ChatRoomVO">
-
 select
-	ChatRid, userId, openTime
+	ChatRoomid, title, userId, openTime
 from 
-	chatRoomTable
-
+	chatRoomTable 
 </select>
 
+<insert id="createRoom">
+insert into chatRoomTable
+values (NULL, title, userId, NOW())
+</insert>
+
+<insert id="msgSend">
+insert into messageTable
+values (senderId, content, sendTime, ChatRId)
+</insert>
 
 </mapper>

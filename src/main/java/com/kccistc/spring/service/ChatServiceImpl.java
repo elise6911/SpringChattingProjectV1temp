@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kccistc.spring.domain.ChatRoomVO;
+import com.kccistc.spring.domain.MessageVO;
 import com.kccistc.spring.persistence.BoardDAO;
 import com.kccistc.spring.persistence.ChatDAO;
 
@@ -43,6 +44,18 @@ public class ChatServiceImpl implements ChatService{
 	public List<ChatRoomVO> chatListAll() throws Exception {
 		// TODO Auto-generated method stub
 		return dao.chatListAll();
+	}
+
+	@Override
+	public void sendMsg(MessageVO msg) throws Exception {
+		// TODO Auto-generated method stub
+		dao.send(msg);
+	}
+
+	@Override
+	public void create(ChatRoomVO chat) throws Exception {
+		// TODO Auto-generated method stub
+		dao.createRoom(chat);
 	}
 	
 }
