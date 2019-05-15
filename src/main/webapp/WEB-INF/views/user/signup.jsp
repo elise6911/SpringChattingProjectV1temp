@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
 <form id="signup" name="signup" method="post" action="signupPost">
 	ID : <input type="text" id="userId" name="userId" oninput="idCheck()">
 	<span id="idCheckMsg"></span><br>
@@ -19,7 +18,8 @@
 	이메일<input type="text" id="emailId" name="emailId" onfocus="this.value=''">@
 	<input type="text" id="emailDomain" name="emailDomain" value="" disabled placeholder="naver.com">
 	<select id="selectmenu" name="select" onchange="emailChanged()">
-	    <option value="naver.com" selected="selected">naver.com</option>
+		<option value="0" selected="selected">선택하세요</option>
+	    <option value="naver.com">naver.com</option>
 	    <option value="gmail.com">gmail.com</option>
 	    <option value="daum.net">daum.net</option>
 	    <option value="nate.com">nate.com</option>
@@ -127,3 +127,4 @@ $(document).ready(function () {
   }
   
 </script>
+

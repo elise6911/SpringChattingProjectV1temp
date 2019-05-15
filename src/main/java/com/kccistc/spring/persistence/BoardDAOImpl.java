@@ -16,8 +16,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession session;
 	
-	private static String namespace
-	="com.spring.mapper.BoardMapper";
+	private static String namespace="com.kccistc.spring.mapper.BoardMapper";
 	
 	@Override
 	public void create(BoardVO vo) throws Exception {

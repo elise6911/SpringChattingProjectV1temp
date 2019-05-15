@@ -11,4 +11,5 @@ public interface UserService {
 	public UserVO checkLoginBefore(String value);
 	public UserVO idCheck(String userId);
 	public void insertUser(UserVO vo);
+
 }

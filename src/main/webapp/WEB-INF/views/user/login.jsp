@@ -4,10 +4,10 @@
 	<input type="hidden" id="RSAModulus" value="${RSAModulus}" /><!-- 서버에서 전달한값을 셋팅한다. -->
 	<input type="hidden" id="RSAExponent" value="${RSAExponent}" /><!-- 서버에서 전달한값을 셋팅한다. -->
 
-	ID : <input type="text" name="userId"><br>
-	PW : <input type="password" name="password"><br>
-	<input type="checkbox" name="useCookie"> Remember Me
-	<input type="submit" name="로그인">
+	ID : <input type="text" name="userId" id="userId"><br>
+	PW : <input type="password" name="password" id="password"><br>
+	<input type="checkbox" name="useCookie" id="useCookie"> Remember Me
+	<button type="submit" id="btn-login">Sign In</button>
 	<input type="reset" name="리셋">
 </form>
 
@@ -23,7 +23,7 @@
 <script>
       $(function () {
     	
-    	$(".btn-login").on("click",function(e){
+    	$("#btn-login").on("click",function(e){
     		
     		e.preventDefault(); 
     		
@@ -40,15 +40,7 @@
     		$("input[name='userId']").val(encryptUserId);
     		$("input[name='password']").val(encryptPassword);
     		
-    		
 			$("#loginForm").submit();
-     		
     	});  
-    	  
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
       });
     </script>
