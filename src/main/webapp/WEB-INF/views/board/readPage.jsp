@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header-dev.jsp"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
 <section class="content">
@@ -17,7 +17,7 @@
 
 				<form role="form" action="modifyPage" method="post">
 
-					<input type='hidden' name='bno' value="${boardVO.bno}"> <input
+					<input type='hidden' name='bno' value="${boardVO.boardNo}"> <input
 						type='hidden' name='page' value="${cri.page}"> <input
 						type='hidden' name='perPageNum' value="${cri.perPageNum}">
 <%-- 					<input type='hidden' name='searchType' value="${cri.searchType}"> --%>
@@ -344,4 +344,4 @@ $(document).ready(function(){
 
 
 
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer-dev.jsp"%>

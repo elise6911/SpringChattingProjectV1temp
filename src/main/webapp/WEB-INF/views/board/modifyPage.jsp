@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header-dev.jsp"%>
 
 <!-- Main content -->
 <section class="content">
@@ -25,8 +25,8 @@
 					<div class="box-body">
 
 						<div class="form-group">
-							<label for="exampleInputEmail1">BNO</label> <input type="text"
-								name='bno' class="form-control" value="${boardVO.bno}"
+							<label for="exampleInputEmail1">boardNo</label> <input type="text"
+								name='boardNo' class="form-control" value="${boardVO.boardNo}"
 								readonly="readonly">
 						</div>
 
@@ -86,4 +86,4 @@ $(document).ready(
 </div>
 <!-- /.content-wrapper -->
 
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer-dev.jsp"%>

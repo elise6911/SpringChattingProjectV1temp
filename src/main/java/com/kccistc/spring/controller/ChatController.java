@@ -38,7 +38,7 @@ public class ChatController {
 		return "chat/chat";
 	}
 	
-	@RequestMapping(value = "/chatList", method = RequestMethod.GET)
+	@RequestMapping(value = "/chatRoomList", method = RequestMethod.GET)
 	public String listAll(Model model) throws Exception {
 		
 		model.addAttribute("chatList", service.chatListAll());
@@ -51,7 +51,7 @@ public class ChatController {
 	public String createChatRoom(ChatRoomVO chat) throws Exception {
 		
 		logger.info("create chat room GET............");
-		return "chat/createChat";
+		return "chat/createChatPost";
 	}
 	
 	@RequestMapping(value = "/createChatPost", method = RequestMethod.POST)
@@ -59,7 +59,21 @@ public class ChatController {
 		
 		service.create(chat);
 		logger.info("create chat room POST............");
-		return "redirect:/chat/chatRoomList";
+		return "chat/chatRoomList";
+	}
+	
+	@RequestMapping(value = "/chatTest", method = RequestMethod.POST)
+	public String chatTestPost(Model model) throws Exception {
+		
+		logger.info("chat Test Post............");
+		return "chat/chatTest";
+	}
+	
+	@RequestMapping(value = "/chatTest", method = RequestMethod.GET)
+	public String chatTestGet(Model model) throws Exception {
+		
+		logger.info("chat Test Get............");
+		return "chat/chatTest";
 	}
 	
 }

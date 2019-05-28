@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
@@ -40,7 +40,17 @@
 		<constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
+	<bean id="chatHandler" class="com.kccistc.spring.handler.ChatWebSocketHandler" />
+
+ 	 <websocket:handlers>
+  		<websocket:mapping handler="chatHandler" path="/chat/chat" />
+	  	<websocket:handshake-interceptors>
+         <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+      	</websocket:handshake-interceptors>
+  		<websocket:sockjs />
+
+	 </websocket:handlers>
+
 	<context:component-scan base-package="com.kccistc.spring.service" />
 	<context:component-scan base-package="com.kccistc.spring.persistence" />
 </beans>

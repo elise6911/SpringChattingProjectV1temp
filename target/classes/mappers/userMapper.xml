@@ -6,7 +6,7 @@
 <mapper namespace="com.kccistc.spring.mapper.userMapper">
 
 	<select id="login" resultType="UserVO">
-		select userId, password from usertable where userId = #{userId} and password = #{password}
+		select * from usertable where userId = #{userId} and password = #{password}
 	</select>
 	<update id="keepLogin">
 		update usertable set sessionKey = #{sessionId}, sessionLimit = #{next} where userId = #{userId} 
@@ -22,6 +22,6 @@
 	
 	<insert id="insertUser" parameterType="UserVO">
 		insert into usertable 
-		values (#{userId}, #{password}, #{name}, #{birthday}, #{gender}, #{emailId}, #{emailDomain}, #{SNS}, #{phoneNumber})
+		values (#{userId}, #{password}, #{name}, #{birthday}, #{gender}, #{emailId}, #{emailDomain}, #{SNS}, #{phoneNumber}, null, null)
 	</insert>
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="../include/header-dev.jsp" %>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -34,7 +35,6 @@
 <script>
 $(document).ready(function () {
     
-
   });
   
 	$(function () {
@@ -83,7 +83,6 @@ $(document).ready(function () {
 	    	}
 	    });
 	  });
-
   function emailChanged(){
 	  if(document.signup.select.options[document.signup.select.selectedIndex].value == '0'){
 		  document.signup.emailDomain.disabled = true;
@@ -128,3 +127,5 @@ $(document).ready(function () {
   
 </script>
 
+
+<%@include file="../include/footer-dev.jsp" %>

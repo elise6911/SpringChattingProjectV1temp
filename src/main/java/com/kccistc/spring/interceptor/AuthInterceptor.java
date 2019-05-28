@@ -77,5 +77,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 			req.getSession().setAttribute("dest", uri + query);
 		}
 	}
+	
+	
 }
 

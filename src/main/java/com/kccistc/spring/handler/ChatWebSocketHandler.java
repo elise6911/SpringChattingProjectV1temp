@@ -13,10 +13,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.google.gson.Gson;
 import com.kccistc.spring.domain.ChatRoomVO;
 import com.kccistc.spring.domain.MessageVO;
-import com.kccistc.spring.domain.UserVO;
 import com.kccistc.spring.persistence.ChatDAO;
 
 public class ChatWebSocketHandler extends TextWebSocketHandler {
@@ -95,7 +93,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
 
-		log(session.getId() + " 익셉션 발생: " + exception.getMessage());
+		log(session.getId() + " Exception : " + exception.getMessage());
 	}
 
 	private void log(String logmsg) {

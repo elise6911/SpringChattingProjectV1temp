@@ -15,16 +15,16 @@ select
 	boardno, title, content, writer, regdate, viewcnt
 from 
 	boardTable
-where boardno = #{bno}
+where boardno = #{boardNo}
 </select>
 
 <update id="update">
 update boardTable set title = #{title}, content =#{content}
-where boardno =#{bno}
+where boardno =#{boardNo}
 </update>
 
 <delete id="delete">
-delete from boardTable where boardno =#{bno}
+delete from boardTable where boardno =#{boardNo}
 </delete>
 
 <select id="listAll" resultType="BoardVO">

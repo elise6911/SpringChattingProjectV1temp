@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return session.selectOne(namespace +".login", dto);
 	}
 
 	@Override

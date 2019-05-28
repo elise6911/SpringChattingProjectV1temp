@@ -1,46 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form id="loginForm" method="post" action="/user/loginPost">
-	<input type="hidden" id="RSAModulus" value="${RSAModulus}" /><!-- 서버에서 전달한값을 셋팅한다. -->
-	<input type="hidden" id="RSAExponent" value="${RSAExponent}" /><!-- 서버에서 전달한값을 셋팅한다. -->
+    <%@include file="../include/header-dev.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<form id="loginForm" method="post" action="/user/loginPost" autocomplete="off">
 
 	ID : <input type="text" name="userId" id="userId"><br>
 	PW : <input type="password" name="password" id="password"><br>
 	<input type="checkbox" name="useCookie" id="useCookie"> Remember Me
-	<button type="submit" id="btn-login">Sign In</button>
+	<button type="submit" class="btn btn-primary btn-block btn-flat btn-login">Sign In</button>
 	<input type="reset" name="리셋">
+	<a href="/user/signup" class="text-center">Register a new membership</a>
 </form>
 
-    <a href="/user/signup" class="text-center">Register a new membership</a>
-
-<!-- 순서에 유의 -->
-<script type="text/javascript" src="/resources/js/rsa.js"></script>
-<script type="text/javascript" src="/resources/js/jsbn.js"></script>
-<script type="text/javascript" src="/resources/js/prng4.js"></script>
-<script type="text/javascript" src="/resources/js/rng.js"></script>
-
-
 <script>
-      $(function () {
-    	
-    	$("#btn-login").on("click",function(e){
-    		
-    		e.preventDefault(); 
-    		
-    		var rsa = new RSAKey();
-    		 rsa.setPublic($('#RSAModulus').val(),$('#RSAExponent').val());
 
-    		console.log($("input[name='userId']").val());
-    		console.log($("input[name='password']").val());
-    		
-    		//사용자 계정정보를 암호화 처리
-    	 	var encryptUserId = rsa.encrypt($("input[name='userId']").val());
-    		var encryptPassword = rsa.encrypt($("input[name='password']").val()); 
 
-    		$("input[name='userId']").val(encryptUserId);
-    		$("input[name='password']").val(encryptPassword);
-    		
+	$(document).ready(function () {
+	  
+	});
+    $(function () {
+   	
+	   	$(".btn-login").on("click",function(e){
+	   		
+	   		e.preventDefault(); 
+	   		
+	   		var userId = $("#userId").val();
+	   		var password = $("#password").val();
+	   		
+	   		if( userId == ""){
+	   			alert("아이디를 입력하세요");
+	   			$("#userId").focus();
+	   			return;
+	   		}
+	   		if( password == ""){
+	   			alert("비밀번호를 입력하세요");
+	   			$("#password").focus();
+	   			return;
+	   		}
 			$("#loginForm").submit();
-    	});  
-      });
-    </script>
+	   	});  
+	});
+     
+      
+</script>
+
+<%@include file="../include/footer-dev.jsp" %>

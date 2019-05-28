@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+0<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header-dev.jsp"%>
 
 <!-- Main content -->
 <section class="content">
@@ -66,9 +66,9 @@
 						<c:forEach items="${list}" var="boardVO">
 
 							<tr>
-								<td>${boardVO.bno}</td>
+								<td>${boardVO.boardNo}</td>
 								<td><a
-									href='/board/read?bno=${boardVO.bno}'>${boardVO.title }</a></td>
+									href='/board/read?bno=${boardVO.boardNo}'>${boardVO.title }</a></td>
 								<td>${boardVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${boardVO.regdate}" /></td>
@@ -153,4 +153,4 @@
 			});
 </script>
 
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer-dev.jsp"%>
