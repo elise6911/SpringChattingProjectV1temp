@@ -35,10 +35,11 @@
  <input type="button" id="enterBtn" value="입장" style = "display:none">
  <input type="button" id="exitBtn" value="나가기" style = "display:none">
 <script type="text/javascript">
-	connect();
+// 	connect();
 
 	function connect() {
-		sock = new SockJS("<c:url value='/chat/chat'/>");
+// 		sock = new SockJS("<c:url value='/chat/chat'/>");
+		sock = new SockJS("http://localhost:80/chat/chat/>");
 		sock.onopen = function() {
 			console.log('open');
 		};
@@ -112,6 +113,22 @@
 		}
 	}
 	$(document).ready(function() {
+		sock = new SockJS("http://localhost:80/chat/chat/>");
+		sock.onopen = function() {
+			console.log('open');
+		};
+		sock.onmessage = function(evt) {
+			var data = evt.data;
+			console.log(data)
+			var obj = JSON.parse(data)
+			console.log(obj)
+			appendMessage(obj.content);
+		};
+		sock.onclose = function() {
+			appendMessage("연결을 끊었습니다.");
+			console.log('close');
+		};
+		
 		$('#message').keypress(function(event) {
 			var keycode = (event.keyCode ? event.keyCode : event.which);
 			// 엔터 키 키코드는 13 엔터 치면 보내기~

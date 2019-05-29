@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -17,6 +18,7 @@ import com.kccistc.spring.domain.ChatRoomVO;
 import com.kccistc.spring.domain.MessageVO;
 import com.kccistc.spring.persistence.ChatDAO;
 
+@Component
 public class ChatWebSocketHandler extends TextWebSocketHandler {
 	@Inject
 	private ChatDAO dao;
